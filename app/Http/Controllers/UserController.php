@@ -261,4 +261,32 @@ class UserController extends Controller
             return redirect('/user')->with('error', 'Data User Gagal dihapus karena terdapat Tabel lain yang terkait dengan data ini');
         }
     }
+    public function confirm_ajax(string $id)
+    {
+        $user = UserModel::find($id);
+
+        return view('user.confirm_ajax', ['user' => $user]);
+    }
+    public function delete_ajax(Request $request, $id) 
+    {
+        if($request->ajax() || $request->wantsJson()) {
+            $user = UserModel::find($id);
+
+            if ($user) {
+                $user->delete();
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Data berhasil dihapus'
+                ]);
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Data tidak ditemukan'
+                ]);
+            }
+        } else {
+            return redirect('/');
+        }
+    }
 }
