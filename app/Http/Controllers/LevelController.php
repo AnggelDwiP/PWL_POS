@@ -294,6 +294,4 @@ class LevelController extends Controller
         // Jika bukan request AJAX, arahkan kembali ke halaman sebelumnya
         return redirect('/');
     }
-
-
 }
