@@ -43,7 +43,7 @@
                         <td class="col-9">{{ $barang->barang_kode }}</td>
                     </tr>
                     <tr>
-                        <th class="text-right col-3">Nama Baran:</th>
+                        <th class="text-right col-3">Nama Barang:</th>
                         <td class="col-9">{{ $barang->barang_nama }}</td>
                     </tr>
                     <tr>

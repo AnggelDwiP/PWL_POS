@@ -205,7 +205,12 @@ class SupplierController extends Controller
 
         return redirect('/');
     }
+    public function show_ajax(string $id)
+    {
+        $supplier = supplierModel::find($id);
 
+        return view('supplier.show_ajax', ['supplier' => $supplier]);
+    }
     // Menampilkan halaman form edit supplier ajax
     public function edit_ajax(string $id)
     {
