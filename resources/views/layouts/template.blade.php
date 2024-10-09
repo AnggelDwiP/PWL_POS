@@ -87,5 +87,25 @@
   $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 </script>
 @stack('js')
+<!-- SweetAlert2 Script -->
+<script src="{{ asset('adminlte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<script>
+    function confirmLogout() {
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: "Anda akan keluar dari aplikasi!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya!',
+            cancelButtonText: 'Tidak, tetap di sini!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "{{ url('logout') }}"; // URL logout
+            }
+        });
+    }
+</script>
 </body>
 </html>
