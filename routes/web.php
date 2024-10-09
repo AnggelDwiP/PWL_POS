@@ -48,7 +48,7 @@ Route::middleware(['auth'])->group(function(){
         Route::delete('/level/{id}', [LevelController::class, 'destroy']);    
     });
 
-    Route::middleware(['authorize:ADM, MNG'])->group(function(){
+    Route::middleware(['authorize:ADM,MNG'])->group(function(){
         Route::get('/user', [UserController::class, 'index']);
         Route::post('/user/list', [UserController::class, 'list']);
         Route::get('/user/create', [UserController::class, 'create']);
@@ -66,7 +66,7 @@ Route::middleware(['auth'])->group(function(){
         Route::delete('/user/{id}', [UserController::class, 'destroy']);
     });
 
-    Route::middleware(['authorize:ADM, MNG'])->group(function(){
+    Route::middleware(['authorize:ADM,MNG'])->group(function(){
         Route::get('/supplier', [SupplierController::class, 'index']);
         Route::post('/supplier/list', [SupplierController::class, 'list']);
         Route::get('/supplier/create', [SupplierController::class, 'create']);
@@ -84,7 +84,7 @@ Route::middleware(['auth'])->group(function(){
         Route::delete('/supplier/{id}', [SupplierController::class, 'destroy']);    
     });
 
-    Route::middleware(['authorize:ADM, MNG, STF'])->group(function(){
+    Route::middleware(['authorize:ADM,MNG,STF'])->group(function(){
         Route::get('/kategori', [KategoriController::class, 'index']);
         Route::post('/kategori/list', [KategoriController::class, 'list']);
         Route::get('/kategori/create', [KategoriController::class, 'create']);
@@ -102,7 +102,7 @@ Route::middleware(['auth'])->group(function(){
         Route::delete('/kategori/{id}', [KategoriController::class, 'destroy']);    
     });
 
-    Route::middleware(['authorize:ADM, MNG, STF, CUS'])->group(function(){
+    Route::middleware(['authorize:ADM,MNG,STF,CUS'])->group(function(){
         Route::get('/barang', [BarangController::class, 'index']);
         Route::post('/barang/list', [BarangController::class, 'list']);
         Route::get('/barang/create', [BarangController::class, 'create']);
