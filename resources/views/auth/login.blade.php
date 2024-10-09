@@ -62,6 +62,11 @@
   <!-- /.card -->
 </div>
 <!-- /.login-box -->
+<div>
+    <p class="mb-0">
+        <a href="{{ url('/register') }}" class="text-center">Don't have an account? Register now!</a>
+    </p>
+</div>
 
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script> 
 <!-- Bootstrap 4 --> 
