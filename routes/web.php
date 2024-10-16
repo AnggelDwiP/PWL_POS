@@ -119,6 +119,8 @@ Route::middleware(['auth'])->group(function(){
         Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']);
         Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']);
         Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);
-        Route::delete('/{id}', [BarangController::class, 'destroy']);    
+        Route::delete('/{id}', [BarangController::class, 'destroy']); 
+        Route::get('/import', [BarangController::class, 'import']);
+        Route::post('/import_ajax', [BarangController::class, 'import_ajax']);
     });
 });
