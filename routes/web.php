@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -31,6 +32,12 @@ Route::get('logout',[AuthController::class,'logout'])->middleware('auth');
 Route::middleware(['auth'])->group(function(){
 
     Route::get('/', [WelcomeController::class, 'index']);
+
+    Route::group(['prefix' =>'profile','middleware'=>'authorize:ADM,MNG,STF,CUS'],function(){
+        Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+        Route::patch('/{id}', [ProfileController::class, 'update'])->name('profile.update');
+    
+    });
 
     Route::group(['prefix' =>'level','middleware'=>'authorize:ADM'],function(){
         Route::get('/', [LevelController::class, 'index']);

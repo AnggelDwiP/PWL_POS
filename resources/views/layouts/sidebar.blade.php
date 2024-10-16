@@ -18,6 +18,12 @@
           <p>Dashboard</p> 
         </a> 
       </li> 
+      <li class="nav-item"> 
+        <a href="{{ route('profile.index') }}" class="nav-link  {{ ($activeMenu == 'profile')? 'active' : '' }} "> 
+          <i class="nav-icon fas fa-user-tie"></i> 
+          <p>Profil</p> 
+        </a> 
+      </li> 
       <li class="nav-header">Data Pengguna</li> 
       <li class="nav-item"> 
         <a href="{{ url('/level') }}" class="nav-link {{ ($activeMenu == 'level')? 'active' : '' }} "> 
