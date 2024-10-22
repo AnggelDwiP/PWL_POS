@@ -72,7 +72,7 @@ $(document).ready(function() {
                             title: 'Berhasil',
                             text: response.message
                         });
-                        dataUser.ajax.reload();
+                        dataSupplier.ajax.reload();
                     } else {
                         $('.error-text').text('');
                         $.each(response.msgField, function(prefix, val) {

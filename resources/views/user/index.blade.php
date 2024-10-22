@@ -5,7 +5,9 @@
       <div class="card-header"> 
         <h3 class="card-title">{{ $page->title }}</h3> 
         <div class="card-tools"> 
+          <a href="{{ url('/user/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export User (xlsx)</a>
           <a href="{{ url('/user/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export User (pdf)</a> 
+          <button onclick="modalAction('{{ url('/user/import') }}')" class="btn btn-info">Import User</button> 
           <button onclick="modalAction('{{ url('/user/create_ajax') }}')" class="btn btn-success">Tambah Data (Ajax)</button> 
         </div> 
       </div> 
@@ -32,7 +34,7 @@
             </div>
           </div>
         </div>
-        <table class="table table-bordered table-striped table-hover table-sm" id="table_user"> 
+        <table class="table table-bordered table-striped table-hover table-sm" id="table-user"> 
           <thead> 
             <tr>
                 <th>No</th>
@@ -60,7 +62,7 @@
     } 
     var dataUser;
     $(document).ready(function() { 
-      dataUser = $('#table_user').DataTable({ 
+      dataUser = $('#table-user').DataTable({ 
           // serverSide: true, jika ingin menggunakan server side processing 
           serverSide: true,      
           ajax: { 

@@ -4,7 +4,9 @@
       <div class="card-header"> 
         <h3 class="card-title">{{ $page->title }}</h3> 
         <div class="card-tools"> 
+          <a href="{{ url('/level/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export Level (xlsx)</a>
           <a href="{{ url('/level/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Level (pdf)</a> 
+          <button onclick="modalAction('{{ url('/level/import') }}')" class="btn btn-info">Import Level</button> 
           <button onclick="modalAction('{{ url('/level/create_ajax') }}')" class="btn btn-success">Tambah Data (Ajax)</button> 
       </div> 
       </div> 
@@ -21,10 +23,10 @@
             </div>
         @endif
         
-        <table class="table table-bordered table-striped table-hover table-sm" id="table_level">
+        <table class="table table-bordered table-striped table-hover table-sm" id="table-level">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No</th>
                     <th>Kode Level</th>
                     <th>Nama Level</th>
                     <th>Aksi</th>
@@ -46,9 +48,9 @@
       });
     }
 
-    var dataUser;
+    var dataLevel;
     $(document).ready(function() { 
-      dataUser = $('#table_level').DataTable({ 
+      dataLevel = $('#table-level').DataTable({ 
           // serverSide: true, jika ingin menggunakan server side processing 
           serverSide: true,      
           ajax: { 
@@ -88,7 +90,7 @@
       }); 
 
       $('#level_kode').on('change', function() {
-        dataUser.ajax.reload();
+        dataLevel.ajax.reload();
       });
     }); 
   </script> 

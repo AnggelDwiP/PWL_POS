@@ -5,7 +5,9 @@
       <div class="card-header"> 
         <h3 class="card-title">{{ $page->title }}</h3> 
         <div class="card-tools"> 
+          <a href="{{ url('/kategori/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export Kategori (xlsx)</a>
           <a href="{{ url('/kategori/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Kategori (pdf)</a> 
+          <button onclick="modalAction('{{ url('/kategori/import') }}')" class="btn btn-info">Import Kategori</button> 
           <button onclick="modalAction('{{ url('/kategori/create_ajax') }}')" class="btn btn-success">Tambah Data (Ajax)</button> 
         </div> 
       </div> 
@@ -17,21 +19,9 @@
             <div class="alert alert-danger">{{ session('error') }} </div>
         @endif
         <div class="row">
-          <div class="col-md-12">
-            <div class="form-group row">
-              <label class="col-1 control-label col-form-label">Filter: </label>
-              <div class="col-3">
-                <select class="form-control" id="kategori_id" name="kategori_id" required>
-                  <option value="">- Semua -</option>
-                  @foreach ($kategori as $item)
-                    <option value="{{ $item->kategori_id }}">{{ $item->kategori_nama }}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-          </div>
+          <div class="col-md-12"></div>
         </div>
-        <table class="table table-bordered table-striped table-hover table-sm" id="table_user"> 
+        <table class="table table-bordered table-striped table-hover table-sm" id="table-kategori"> 
           <thead> 
             <tr>
                 <th>No</th>
@@ -57,9 +47,9 @@
       });
     }
 
-    var dataUser;
+    var dataKategori;
     $(document).ready(function() { 
-      dataUser = $('#table_user').DataTable({ 
+      dataKategori = $('#table-kategori').DataTable({ 
           // serverSide: true, jika ingin menggunakan server side processing 
           serverSide: true,      
           ajax: { 
@@ -99,7 +89,7 @@
       }); 
 
       $('#kategori_id').on('change', function() {
-        dataUser.ajax.reload();
+        dataKategori.ajax.reload();
       })
     }); 
   </script> 
