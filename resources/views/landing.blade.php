@@ -200,14 +200,8 @@
     <footer class="footer">
         <div class="container">
             <h3>About Developer</h3>
-            <p>Created by Suhatta</p>
-            <p>3A - Business Information Systems </p>
-            {{-- <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div> --}}
+            <p>Created by Anggel Dwi Pramita</p>
+            <p>3C - Business Information Systems </p>
             <p>&copy; 2024 PWL POS. All rights reserved.</p>
         </div>
     </footer>

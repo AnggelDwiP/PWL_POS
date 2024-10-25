@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BarangModel;
+use App\Models\PenjualanModel;
+use App\Models\SupplierModel;
+use App\Models\UserModel;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -15,6 +19,11 @@ class WelcomeController extends Controller
 
         $activeMenu = 'dashboard';
 
-        return view('welcome', ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu]);
+        $totalUser = UserModel::count();
+        $totalPenjualan = PenjualanModel::count();
+        $totalBarang = BarangModel::count();
+        $totalSupplier = SupplierModel::count();
+
+        return view('welcome', compact('totalUser', 'totalPenjualan', 'totalBarang', 'totalSupplier'), ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu]);
     }
 }

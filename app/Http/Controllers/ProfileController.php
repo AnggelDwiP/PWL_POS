@@ -68,4 +68,20 @@ class ProfileController extends Controller
 
         return back()->with('status', 'Profile Diperbarui');
     }
+
+    public function destroy(UserModel $user)
+    {
+        // Hapus avatar dari storage jika ada
+        if ($user->avatar && Storage::exists('public/photos/' . $user->avatar)) {
+            Storage::delete('public/photos/' . $user->avatar);
+        }
+        
+        // Set kolom avatar menjadi null pada database
+        $user->avatar = null;
+        $user->save();
+    
+        // Redirect ke halaman profil dengan pesan sukses
+        return redirect()->route('profile.index')->with('status', 'Foto profil berhasil dihapus.');
+    }
+    
 }

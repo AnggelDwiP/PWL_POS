@@ -411,7 +411,7 @@ class LevelController extends Controller
     public function export_pdf()
     {
         $level = LevelModel::select('level_kode', 'level_nama')
-        ->orderBy('level_kode')
+        ->orderBy('level_id')
         ->get();
 
         $pdf = Pdf::loadView('level.export_pdf', ['level' => $level]);

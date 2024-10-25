@@ -41,6 +41,8 @@ Route::middleware(['auth'])->group(function(){
     Route::group(['prefix' =>'profile','middleware'=>'authorize:ADM,MNG,STF,CUS'],function(){
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
         Route::patch('/{id}', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile/{user}', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     
     });
 

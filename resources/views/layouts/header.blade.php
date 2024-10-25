@@ -34,17 +34,17 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-
       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-              {{ Auth::user()->nama }}  
-          </a>
-          <div class="dropdown-menu dropdown-menu-right">
-              <a href="{{ route('profile.index') }}" class="dropdown-item">Profile</a>
-              <div class="dropdown-divider"></div>
-              <a href=# class="nav-link" onclick="confirmLogout()"> Logout</a>
-          </div>
-      </li>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+            <img src="{{ Auth::user()->avatar ? asset('storage/photos/' . Auth::user()->avatar) : asset('defautpp.jpg') }}" alt="Profile Picture" class="rounded-circle" width="30" height="30">
+            {{ Auth::user()->nama }}  
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a href="{{ route('profile.index') }}" class="dropdown-item">Profile</a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item" onclick="confirmLogout()">Logout</a>
+        </div>
+    </li>
     
     
     </ul>

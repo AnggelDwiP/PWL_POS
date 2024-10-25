@@ -21,9 +21,17 @@
                             @if($user->avatar)
                                 <img src="{{ asset('storage/photos/'.$user->avatar) }}" class="img-thumbnail rounded mx-auto d-block">
                             @else
-                                <img src="{{ asset('img/pp.png') }}" class="img-thumbnail rounded mx-auto d-block">
+                                <img src="{{ asset('defautpp.jpg') }}" class="img-thumbnail rounded mx-auto d-block">
                             @endif
-                            
+
+                            <!-- Tambahkan tombol hapus profil di sini tepat di bawah foto -->
+                            <form action="{{ route('profile.destroy', $user->user_id) }}" method="POST" class="mt-3">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-block">
+                                    {{ __('Hapus Profil') }}
+                                </button>
+                            </form>
                         </div>
                         <div class="col-md-8">
                             <form method="POST" action="{{ route('profile.update', $user->user_id) }}" enctype="multipart/form-data">
@@ -100,7 +108,7 @@
                                     <div class="col-md-6">
                                         <input id="avatar" type="file" class="form-control" name="avatar">
                                     </div>
-                                </div>
+                                </div>  
 
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">

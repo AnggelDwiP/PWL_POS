@@ -406,7 +406,7 @@ class SupplierController extends Controller
     public function export_pdf()
     {
         $supplier = SupplierModel::select('supplier_kode', 'supplier_nama', 'supplier_alamat')
-        ->orderBy('supplier_kode')
+        ->orderBy('supplier_id')
         ->get();
 
         $pdf = Pdf::loadView('supplier.export_pdf', ['supplier' => $supplier]);
