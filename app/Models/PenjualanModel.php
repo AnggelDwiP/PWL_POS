@@ -19,13 +19,14 @@ class PenjualanModel extends Model
     {
         return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
     }
-
+    public function detail(): HasMany
+    {
+        return $this->hasMany(PenjualanDetailModel::class, 'penjualan_id', 'penjualan_id');
+    }
     public function penjualan_detail(): HasMany
     {
         return $this->hasMany(PenjualanDetailModel::class, 'penjualan_id', 'penjualan_id');
     }
-
-    // Menambahkan relasi ke tabel barang
     public function barang(): BelongsTo
     {
         return $this->belongsTo(BarangModel::class, 'barang_id', 'barang_id');
