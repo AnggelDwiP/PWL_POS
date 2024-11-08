@@ -11,13 +11,11 @@ class UserController extends Controller
 {
     public function index()
     {
-        // Load all users along with their level relationship
         return UserModel::with('level')->get();
     }
     
     public function store(Request $request)
     {
-        // Validate request data
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|min:3|unique:m_user,username',
             'nama'     => 'required|string|max:100',                     
@@ -29,7 +27,6 @@ class UserController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        // Create user
         $user = UserModel::create($request->all());
         
         return response()->json($user->load('level'), 201);
@@ -37,13 +34,11 @@ class UserController extends Controller
 
     public function show(UserModel $user)
     {
-        // Load level relationship for the user
         return response()->json($user->load('level'));
     }
 
     public function update(Request $request, UserModel $user)
     {
-        // Validate request data
         $validator = Validator::make($request->all(), [
             'username' => 'sometimes|string|min:3|max:20|unique:m_user,username,' . $user->id . ',user_id',
             'nama'     => 'sometimes|string|max:100',
@@ -54,13 +49,10 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
-    
-        // Prepare data for update
+
         $data = $request->only(['username', 'nama', 'password', 'level_id']);
-    
-        // Only update password if it is provided
+
         if (!empty($data['password'])) {
-            // Encrypt the password if it's being updated
             $data['password'] = bcrypt($data['password']);
         }
     
@@ -68,9 +60,6 @@ class UserController extends Controller
     
         return response()->json($user->load('level'));
     }
-    
-
-
 
     public function destroy(UserModel $user)
     {

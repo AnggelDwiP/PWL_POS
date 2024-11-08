@@ -12,7 +12,7 @@ class RegisterController extends Controller
     public function __invoke(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'username' => 'required',
+            'username' => 'required|unique:m_user,username',
             'nama' => 'required',
             'password' => 'required|min:5|confirmed',
             'level_id' => 'required',

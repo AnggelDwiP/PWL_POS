@@ -26,31 +26,36 @@ Route::post('/logout', App\Http\Controllers\Api\LogoutController::class)->name('
 Route::middleware('auth:api')->get('/user', function (Request $request){
     return $request->user();
 });
-Route::get('levels', [LevelController::class, 'index']);
-Route::post('levels', [LevelController::class, 'store']);
-Route::get('levels/{level}', [LevelController::class, 'show']);
-Route::put('levels/{level}', [LevelController::class, 'update']);
-Route::delete('levels/{level}', [LevelController::class, 'destroy']);
 
-Route::get('users', [UserController::class, 'index']);
-Route::post('users', [UserController::class, 'store']);
-Route::get('users/{user}', [UserController::class, 'show']);
-Route::put('users/{user}', [UserController::class, 'update']);
-Route::delete('users/{user}', [UserController::class, 'destroy']);
+Route::middleware('auth:api')->group(function(){
 
-Route::get('kategories', [KategoriController::class, 'index']);
-Route::post('kategories', [KategoriController::class, 'store']);
-Route::get('kategories/{kategori}', [KategoriController::class, 'show']);
-Route::put('kategories/{kategori}', [KategoriController::class, 'update']);
-Route::delete('kategories/{kategori}', [KategoriController::class, 'destroy']);
+    Route::get('levels', [LevelController::class, 'index']);
+    Route::post('levels', [LevelController::class, 'store']);
+    Route::get('levels/{level}', [LevelController::class, 'show']);
+    Route::put('levels/{level}', [LevelController::class, 'update']);
+    Route::delete('levels/{level}', [LevelController::class, 'destroy']);
+
+    Route::get('users', [UserController::class, 'index']);
+    Route::post('users', [UserController::class, 'store']);
+    Route::get('users/{user}', [UserController::class, 'show']);
+    Route::put('users/{user}', [UserController::class, 'update']);
+    Route::delete('users/{user}', [UserController::class, 'destroy']);
+
+    Route::get('kategories', [KategoriController::class, 'index']);
+    Route::post('kategories', [KategoriController::class, 'store']);
+    Route::get('kategories/{kategori}', [KategoriController::class, 'show']);
+    Route::put('kategories/{kategori}', [KategoriController::class, 'update']);
+    Route::delete('kategories/{kategori}', [KategoriController::class, 'destroy']);
 
 
-Route::get('barangs', [BarangController::class, 'index']);
-Route::post('barangs', [BarangController::class, 'store']);
-Route::get('barangs/{barang}', [BarangController::class, 'show']);
-Route::put('barangs/{barang}', [BarangController::class, 'update']);
-Route::delete('barangs/{barang}', [BarangController::class, 'destroy']);
+    Route::get('barangs', [BarangController::class, 'index']);
+    Route::post('barangs', [BarangController::class, 'store']);
+    Route::get('barangs/{barang}', [BarangController::class, 'show']);
+    Route::put('barangs/{barang}', [BarangController::class, 'update']);
+    Route::delete('barangs/{barang}', [BarangController::class, 'destroy']);
 
-Route::get('penjualans', [PenjualanController::class, 'index'])->name('penjualan.index');
-Route::post('penjualans', [PenjualanController::class, 'store'])->name('penjualan.store');
-Route::get('penjualans/{penjualan}', [PenjualanController::class, 'show'])->name('penjualan.show');
+    Route::get('penjualans', [PenjualanController::class, 'index'])->name('penjualan.index');
+    Route::post('penjualans', [PenjualanController::class, 'store'])->name('penjualan.store');
+    Route::get('penjualans/{penjualan}', [PenjualanController::class, 'show'])->name('penjualan.show');
+
+});
